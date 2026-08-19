@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.raw({ type: "*/*" }));
 
-app.all("*", (req, res) => {
+app.use((req, res) => {
     console.log("========== REQUEST ==========");
     console.log("METHOD:", req.method);
     console.log("URL:", req.originalUrl);
