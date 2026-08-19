@@ -9,8 +9,15 @@ app.get("/path", (req, res) => {
 });
 
 app.post("/api/webhook/583104927615/8fK3mQ7xV2pL9zR4", (req, res) => {
-    console.log(req.body);
-    res.send("Received!");
+    const content = req.body.content;
+    const username = req.body.username;
+
+    console.log("Username:", username);
+    console.log("Content:", content);
+
+    res.json({
+        success: true
+    });
 });
 
 app.listen(process.env.PORT || 3000, () => {
