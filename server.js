@@ -4,10 +4,12 @@ const app = express();
 app.use(express.json());
 
 app.post("/api/webhooks/:id/:token", (req, res) => {
-    console.log("Webhook received!");
+    console.log("================================");
+    console.log("WEBHOOK POST RECEIVED");
     console.log("ID:", req.params.id);
-    console.log("Token:", req.params.token);
-    console.log("Content:", req.body);
+    console.log("TOKEN:", req.params.token);
+    console.log("BODY:", req.body);
+    console.log("================================");
 
     res.status(204).send();
 });
