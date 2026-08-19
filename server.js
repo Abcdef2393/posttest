@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.raw({ type: "*/*" }));
 
-app.post("/api/webhooks/:id/:token", (req, res) => {
-    console.log("ROBLOX WEBHOOK RECEIVED");
-    console.log("Content-Type:", req.headers["content-type"]);
-    console.log("Body:", req.body);
+app.all("*", (req, res) => {
+    console.log("========== REQUEST ==========");
+    console.log("METHOD:", req.method);
+    console.log("URL:", req.originalUrl);
+    console.log("CONTENT TYPE:", req.headers["content-type"]);
+    console.log("BODY:", req.body.toString());
+    console.log("=============================");
 
     res.status(204).end();
 });
