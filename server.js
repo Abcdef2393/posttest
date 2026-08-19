@@ -2,14 +2,13 @@ const express = require("express");
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.post("/api/webhooks/:id/:token", (req, res) => {
-    console.log("================================");
-    console.log("WEBHOOK POST RECEIVED");
-    console.log("ID:", req.params.id);
-    console.log("TOKEN:", req.params.token);
-    console.log("BODY:", req.body);
-    console.log("================================");
+    console.log("WEBHOOK RECEIVED");
+    console.log("URL:", req.originalUrl);
+    console.log("Headers:", req.headers);
+    console.log("Body:", req.body);
 
     res.status(204).send();
 });
